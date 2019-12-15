@@ -1,6 +1,6 @@
 {
   "name": "yuniql-azdevops-extensions",
-  "version": "1.0.0",
+  "version": "0.6.0",
   "description": "This provides extensions to run database migrations with YUNIQL",
   "main": "index.js",
   "scripts": {

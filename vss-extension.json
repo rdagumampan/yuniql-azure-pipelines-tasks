@@ -1,10 +1,10 @@
 {
   "manifestVersion": 1,
   "id": "yuniql-azdevops-extensions",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "name": "Yuniql",
   "publisher": "rdagumampan",
-  "description": "Run database migrations with YUNIQL.",
+  "description": "Run database migrations and schema versioning with Yuniql.",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
@@ -16,6 +16,7 @@
   "tags": [
     "yuniql",
     "database-migration",
+    "database-version-control",
     "sql-server",
     "mysql",
     "postgresql"

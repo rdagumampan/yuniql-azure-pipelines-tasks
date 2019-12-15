@@ -26,14 +26,14 @@
       "type": "string",
       "name": "version",
       "label": "Version",
-      "defaultValue": "",
+      "defaultValue": "0.1.0-alpha",
       "required": false,
-      "helpMarkDown": "The version of YUNIQL CLI. If omitted, the latest version of yuniql-cli is installed. Visit the [yuniql packages](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
+      "helpMarkDown": "The version of YUNIQL CLI. If omitted, the latest version of yuniql-cli is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
     }
   ],
   "execution": {
-    "Node": {
-      "target": "index.js"
+    "Powershell5": {
+      "target": "install.ps1"
     }
   }
 }

@@ -6,17 +6,15 @@
   "helpMarkDown": "This installs the yuniql-cli",
   "author": "Rodel E. Dagumampan",
 
-  "preview": false,
+  "preview": true,
   "showEnvironmentVariables": false,
   "runsOn": [
-    "Agent",
-    "MachineGroup",
-    "Server"
+    "Agent"
   ],
   "category": "Azure Pipelines",
   "version": {
     "Major": 0,
-    "Minor": 1,
+    "Minor": 5,
     "Patch": 0
   },
 

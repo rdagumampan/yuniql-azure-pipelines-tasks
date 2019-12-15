@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "yuniql-azdevops-extensions",
-  "version": "0.2.0",
+  "version": "0.5.1",
   "name": "Yuniql",
   "publisher": "rdagumampan",
   "description": "Run database migrations and schema versioning with Yuniql.",
@@ -17,9 +17,12 @@
     "yuniql",
     "database-migration",
     "database-version-control",
-    "sql-server",
+    "database-management",
+    "sql",
+    "sqlserver",
     "mysql",
-    "postgresql"
+    "postgresql",
+    "devops"
   ],
   "galleryFlags": [
     "Free",
@@ -34,6 +37,10 @@
     }
   },
   "files": [
+    {
+      "path": "images",
+      "addressable": true      
+    },
     {
       "path": "src/install",
       "packagePath": "install"

@@ -6,7 +6,7 @@
   "helpMarkDown": "This runs database migration with yuniql-cli",
   "author": "Rodel E. Dagumampan",
 
-  "preview": false,
+  "preview": true,
   "showEnvironmentVariables": false,
   "runsOn": [
     "Agent",
@@ -16,7 +16,7 @@
   "category": "Azure Pipelines",
   "version": {
     "Major": 0,
-    "Minor": 1,
+    "Minor": 5,
     "Patch": 0
   },
 
@@ -72,13 +72,31 @@
       "label": "Token key/value pairs",
       "type": "string",
       "defaultValue": "",
-      "required": true,
+      "required": false,
       "helpMarkDown": "Token key/value pairs for token replacement."
+    },
+    {
+      "name": "additionalArguments",
+      "label": "Arguments",
+      "type": "string",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Additional CLI arguments"
     }
   ],
   "execution": {
     "Powershell5": {
-      "target": "run.ps1"
+      "target": "run.ps1",
+      "platforms": [
+        "windows"
+    ]
     }
-  }
-}
+  },
+  "screenshots": [
+    {
+        "path": "screenshot-01.png"
+    },
+    {
+      "path": "screenshot-02.png"
+    }
+]}

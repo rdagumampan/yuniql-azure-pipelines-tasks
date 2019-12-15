@@ -1,0 +1,23 @@
+INF   2019-12-15T17:28:08.1181145Z   Started migration from C:\play\yuniql\sqlserver-samples\visitph-db.
+INF   2019-12-15T17:28:08.1769985Z   No explicit target version requested. We'll use latest available locally v1.01 on C:\play\yuniql\sqlserver-samples\visitph-db.
+ERR   2019-12-15T17:28:18.7077537Z   Failed to execute run function. Target database will be rolled back to its previous state. 
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "DEMODB" requested by the login. The login failed.
+Login failed for user 'DESKTOP-ULR8GDO\rdagumampan'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Yuniql.SqlServer.SqlServerDataService.QuerySingleBool(String connectionString, String sqlStatement)
+   at Yuniql.SqlServer.SqlServerDataService.IsTargetDatabaseConfigured()
+   at Yuniql.Core.MigrationService.Run(String workingPath, String targetVersion, Boolean autoCreateDatabase, List`1 tokenKeyPairs, Boolean verifyOnly, String delimeter)
+   at Yuniql.CLI.CommandLineService.RunMigration(RunOption opts)
+ClientConnectionId:db4c5906-4177-4270-a4a1-903f7b4fb459
+Error Number:4060,State:1,Class:11

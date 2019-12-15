@@ -85,11 +85,9 @@
     }
   ],
   "execution": {
-    "Powershell": {
-      "target": "run.ps1",
-      "platforms": [
-        "windows"
-    ]
+    "Node": {
+      "target": "runyuniql.js",
+      "argumentFormat": ""
     }
   }
 }

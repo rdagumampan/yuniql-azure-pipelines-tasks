@@ -1,0 +1,22 @@
+{
+  "name": "yuniql-azdevops-extensions",
+  "version": "1.0.0",
+  "description": "This provides extensions to run database migrations with YUNIQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yuniql",
+    "database-migration"
+  ],
+  "author": "rdagumampan",
+  "license": "Apache-2-0",
+  "dependencies": {
+    "azure-pipelines-task-lib": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.8",
+    "@types/q": "^1.5.2"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "manifestVersion": 1,
+  "id": "yuniql-azdevops-extensions",
+  "version": "1.0.0",
+  "name": "Yuniql",
+  "publisher": "rdagumampan",
+  "description": "Run database migrations with YUNIQL.",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "yuniql",
+    "database-migration",
+    "sql-server",
+    "mysql",
+    "postgresql"
+  ],
+  "galleryFlags": [
+    "Free",
+    "Public"
+  ],
+  "icons": {
+    "default": "icon.png"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+      "path": "src/install",
+      "packagePath": "install"
+    },
+    {
+      "path": "src/deploy",
+      "packagePath": "deploy"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "install/node_modules"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "deploy/node_modules"
+    }
+  ],
+  "links": {
+    "overview": {
+      "uri": "https://getyuniql.org"
+    },
+    "license": {
+      "uri": "https://github.com/rdagumampan/yuniql/blob/master/LICENSE.md"
+    },
+    "repository": {
+      "uri": "https://github.com/rdagumampan/yuniql"
+    },
+    "issues": {
+      "uri": "https://github.com/rdagumampan/yuniql/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/rdagumampan/yuniql"
+  },
+  "badges": [
+    {
+      "href": "",
+      "uri": "",
+      "description": "Build Status"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "install-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "install"
+      }
+    },
+    {
+      "id": "run-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "run"
+      }
+    }
+  ]
+}

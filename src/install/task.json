@@ -30,7 +30,7 @@
     }
   ],
   "execution": {
-    "Powershell5": {
+    "Powershell": {
       "target": "install.ps1"
     }
   }

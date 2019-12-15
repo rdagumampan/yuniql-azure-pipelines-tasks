@@ -85,7 +85,7 @@
     }
   ],
   "execution": {
-    "Powershell5": {
+    "Powershell": {
       "target": "run.ps1",
       "platforms": [
         "windows"

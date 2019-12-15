@@ -8,6 +8,8 @@ import * as os from 'os';
 async function run() {
   tl.setResourcePath(path.join(__dirname, 'task.json'));
   try {
+    const version = taskLib.getInput('version', false);
+
     const workspacePath = taskLib.getInput('workspacePath', true);
     const connectionString = taskLib.getInput('connectionString', true);
 
@@ -19,7 +21,7 @@ async function run() {
 
     console.log("Run is executed");
 
-    var yuniqlPath = path.join(toolLib.findLocalTool('yuniql', '1.0.0'),'yuniql.exe');
+    var yuniqlPath = path.join(toolLib.findLocalTool('yuniql', version),'yuniql.exe');
 
     let yuniql = new tr.ToolRunner(yuniqlPath);
     yuniql.arg('run');

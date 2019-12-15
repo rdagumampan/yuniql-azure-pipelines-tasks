@@ -91,12 +91,5 @@
         "windows"
     ]
     }
-  },
-  "screenshots": [
-    {
-        "path": "screenshot-01.png"
-    },
-    {
-      "path": "screenshot-02.png"
-    }
-]}
+  }
+}

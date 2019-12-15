@@ -16,7 +16,11 @@
     "azure-pipelines-task-lib": "^2.9.3"
   },
   "devDependencies": {
-    "@types/node": "^12.12.17",
-    "@types/q": "^1.5.2"
+    "@types/mocha": "2.2.48",
+    "@types/node": "^10.12.24",
+    "@types/q": "^1.5.1",
+    "azure-pipelines-task-lib": "3.0.0-preview",
+    "azure-pipelines-tool-lib": "^0.12.0",
+    "typed-rest-client": "^1.1.2"
   }
 }

@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "yuniql-azdevops-extensions",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "name": "Yuniql",
   "publisher": "rdagumampan",
   "description": "Run database migrations and schema versioning with Yuniql.",
@@ -76,13 +76,6 @@
     "type": "git",
     "uri": "https://github.com/rdagumampan/yuniql"
   },
-  "badges": [
-    {
-      "href": "",
-      "uri": "",
-      "description": "Build Status"
-    }
-  ],
   "contributions": [
     {
       "id": "install-task",

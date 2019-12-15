@@ -30,8 +30,9 @@
     }
   ],
   "execution": {
-    "Powershell": {
-      "target": "install.ps1"
+    "Node": {
+      "target": "useyuniql.js",
+      "argumentFormat": ""
     }
   }
 }

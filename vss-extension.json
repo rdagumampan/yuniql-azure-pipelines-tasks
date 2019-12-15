@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "yuniql-azdevops-extensions",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "name": "Yuniql",
   "publisher": "rdagumampan",
   "description": "Run database migrations with YUNIQL.",
@@ -34,16 +34,12 @@
   },
   "files": [
     {
-      "path": "images",
-      "addressable": true
-    },
-    {
       "path": "src/install",
       "packagePath": "install"
     },
     {
-      "path": "src/deploy",
-      "packagePath": "deploy"
+      "path": "src/run",
+      "packagePath": "run"
     },
     {
       "path": "src/node_modules",
@@ -51,7 +47,7 @@
     },
     {
       "path": "src/node_modules",
-      "packagePath": "deploy/node_modules"
+      "packagePath": "run/node_modules"
     }
   ],
   "links": {

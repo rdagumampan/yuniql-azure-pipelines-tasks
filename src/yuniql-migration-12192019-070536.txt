@@ -1,0 +1,47 @@
+INF   2019-12-19T06:05:36.1887050Z   Started migration from C:\play\yuniql\sqlserver-samples\visitph-db.
+INF   2019-12-19T06:05:36.2366420Z   No explicit target version requested. We'll use latest available locally v1.01 on C:\play\yuniql\sqlserver-samples\visitph-db.
+INF   2019-12-19T06:05:36.5815855Z   Target database does not exist. Creating database DEMODB on .\.
+INF   2019-12-19T06:05:36.8560776Z   Created database DEMODB on .\.
+INF   2019-12-19T06:05:36.9426359Z   Target database DEMODB on .\ not yet configured for migration.
+INF   2019-12-19T06:05:36.9660123Z   Configured database migration support for DEMODB on .\.
+INF   2019-12-19T06:05:36.9939166Z   Found the 1 script files on C:\play\yuniql\sqlserver-samples\visitph-db\_init
+INF   2019-12-19T06:05:37.0015369Z   initialization-health-checks.sql
+INF   2019-12-19T06:05:37.0417238Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\_init\initialization-health-checks.sql.
+INF   2019-12-19T06:05:37.0492526Z   Executed script files on C:\play\yuniql\sqlserver-samples\visitph-db\_init
+INF   2019-12-19T06:05:37.0587014Z   Found the 1 script files on C:\play\yuniql\sqlserver-samples\visitph-db\_pre
+INF   2019-12-19T06:05:37.0662696Z   pre-migration-tasks.sql
+INF   2019-12-19T06:05:37.0779891Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\_pre\pre-migration-tasks.sql.
+INF   2019-12-19T06:05:37.0845240Z   Executed script files on C:\play\yuniql\sqlserver-samples\visitph-db\_pre
+INF   2019-12-19T06:05:37.0952875Z   Found the 4 script files on C:\play\yuniql\sqlserver-samples\visitph-db\v0.00
+INF   2019-12-19T06:05:37.1021412Z   01-setup-tables.sql\r\n\t02-setup-views.sql\r\n\t03-setup-stored-procedures.sql\r\n\t04-setup-functions.sql
+INF   2019-12-19T06:05:37.1176227Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\v0.00\01-setup-tables.sql.
+INF   2019-12-19T06:05:37.1323716Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\v0.00\02-setup-views.sql.
+INF   2019-12-19T06:05:37.1482695Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\v0.00\03-setup-stored-procedures.sql.
+INF   2019-12-19T06:05:37.1641677Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\v0.00\04-setup-functions.sql.
+INF   2019-12-19T06:05:37.1724038Z   Found the 1 bulk files on C:\play\yuniql\sqlserver-samples\visitph-db\v0.00
+INF   2019-12-19T06:05:37.1801205Z   Visitor.csv
+INF   2019-12-19T06:05:37.3431947Z   Imported bulk file C:\play\yuniql\sqlserver-samples\visitph-db\v0.00\Visitor.csv.
+INF   2019-12-19T06:05:37.3523757Z   Completed migration to version C:\play\yuniql\sqlserver-samples\visitph-db\v0.00
+INF   2019-12-19T06:05:37.3605747Z   Found the 1 script files on C:\play\yuniql\sqlserver-samples\visitph-db\v1.00
+INF   2019-12-19T06:05:37.3681781Z   01-setup-tokenized-views.sql
+INF   2019-12-19T06:05:37.3836475Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\v1.00\01-setup-tokenized-views.sql.
+INF   2019-12-19T06:05:37.3922222Z   Found the 0 bulk files on C:\play\yuniql\sqlserver-samples\visitph-db\v1.00
+INF   2019-12-19T06:05:37.4017144Z   
+INF   2019-12-19T06:05:37.4115831Z   Completed migration to version C:\play\yuniql\sqlserver-samples\visitph-db\v1.00
+INF   2019-12-19T06:05:37.4294643Z   Found the 1 script files on C:\play\yuniql\sqlserver-samples\visitph-db\v1.01\visitor-data
+INF   2019-12-19T06:05:37.4386076Z   01-initialize-more-visitor-data.sql
+INF   2019-12-19T06:05:37.4552344Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\v1.01\visitor-data\01-initialize-more-visitor-data.sql.
+INF   2019-12-19T06:05:37.4683668Z   Found the 0 script files on C:\play\yuniql\sqlserver-samples\visitph-db\v1.01
+INF   2019-12-19T06:05:37.4771554Z   
+INF   2019-12-19T06:05:37.4862645Z   Found the 0 bulk files on C:\play\yuniql\sqlserver-samples\visitph-db\v1.01
+INF   2019-12-19T06:05:37.4976432Z   
+INF   2019-12-19T06:05:37.5089416Z   Completed migration to version C:\play\yuniql\sqlserver-samples\visitph-db\v1.01
+INF   2019-12-19T06:05:37.5192592Z   Found the 2 script files on C:\play\yuniql\sqlserver-samples\visitph-db\_draft
+INF   2019-12-19T06:05:37.5312245Z   01-setup-destination-tables.sql\r\n\t02-initialize-destination-tables.sql
+INF   2019-12-19T06:05:37.5605748Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\_draft\01-setup-destination-tables.sql.
+INF   2019-12-19T06:05:37.5816503Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\_draft\02-initialize-destination-tables.sql.
+INF   2019-12-19T06:05:37.5928363Z   Executed script files on C:\play\yuniql\sqlserver-samples\visitph-db\_draft
+INF   2019-12-19T06:05:37.6040927Z   Found the 1 script files on C:\play\yuniql\sqlserver-samples\visitph-db\_post
+INF   2019-12-19T06:05:37.6143436Z   post-migration-tasks.sql
+INF   2019-12-19T06:05:37.6359068Z   Executed script file C:\play\yuniql\sqlserver-samples\visitph-db\_post\post-migration-tasks.sql.
+INF   2019-12-19T06:05:37.6456097Z   Executed script files on C:\play\yuniql\sqlserver-samples\visitph-db\_post

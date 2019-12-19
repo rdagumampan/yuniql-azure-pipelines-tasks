@@ -16,7 +16,7 @@
   "category": "Azure Pipelines",
   "version": {
     "Major": 0,
-    "Minor": 7,
+    "Minor": 9,
     "Patch": 0
   },
 
@@ -26,8 +26,8 @@
       "type": "string",
       "name": "version",
       "label": "Version",
-      "defaultValue": "0.1.0-alpha",
-      "required": false,
+      "defaultValue": "latest",
+      "required": true,
       "helpMarkDown": "The version of YUNIQL CLI. If omitted, the latest version of yuniql-cli is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
     },
     {
@@ -53,9 +53,9 @@
       "required": true,
       "defaultValue": "SqlServer",
       "options": {
-          "SqlServer": "SqlServer",
-          "PostgreSql": "PostgreSql",
-          "MySql": "MySql"
+          "sqlserver": "SqlServer",
+          "postgresql": "PostgreSql",
+          "mysql": "MySql"
       },
       "helpMarkDown": "The target database platform. Default is SqlServer."
     },

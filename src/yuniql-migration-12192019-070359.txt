@@ -1,0 +1,3 @@
+INF   2019-12-19T06:04:00.1424334Z   Started migration from C:\play\yuniql\sqlserver-samples\visitph-db.
+INF   2019-12-19T06:04:00.1979713Z   No explicit target version requested. We'll use latest available locally v1.01 on C:\play\yuniql\sqlserver-samples\visitph-db.
+INF   2019-12-19T06:04:00.6403653Z   Target database runs the latest version already. No changes made at DEMODB on .\.

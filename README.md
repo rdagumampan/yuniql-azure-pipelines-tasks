@@ -14,6 +14,7 @@ This download and installs the yuniql-cli.
 ![](images/screenshot-02.png)
 
 This runs database migration with yuniql-cli.
+* `Version`: The version of Yuniql CLI. If omitted, the latest version of yuniql-cli is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version. 
 * `Database connection string`: The connection string to your target database server.
 * `Workspace path`: The location of your version directories to run.
 * `Target platform`: The target database platform. Default is SqlServer.

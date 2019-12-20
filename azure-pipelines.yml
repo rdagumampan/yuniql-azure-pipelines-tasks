@@ -1,0 +1,17 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: '$(Build.SourcesDirectory)/src'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd $(Build.SourcesDirectory)/src
+      tsc

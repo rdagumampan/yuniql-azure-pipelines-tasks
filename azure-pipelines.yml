@@ -30,10 +30,19 @@ steps:
 - task: CmdLine@2
   inputs:
     script:
-      cd $(Build.SourcesDirectory)/src
+    workingDirectory: cd $(Build.SourcesDirectory)/src
       call npm install
+
+- task: CmdLine@2
+  inputs:
+    script:
+    workingDirectory: cd $(Build.SourcesDirectory)/src
       tsc
-      cd $(Build.SourcesDirectory)
+
+- task: CmdLine@2
+  inputs:
+    script:
+    workingDirectory: cd $(Build.SourcesDirectory)
       tfx extension create --manifest-globs vss-extension.json
 
 - task: CopyFiles@2

@@ -1,9 +1,9 @@
 {
   "id": "52ecb5fe-bacc-4713-8c14-ea239b195aaa",
-  "name": "install",
+  "name": "InstallYUNIQLCLI",
   "friendlyName": "Install YUNIQL CLI",
-  "description": "Install YUNIQL CLI",
-  "helpMarkDown": "This installs the yuniql-cli",
+  "description": "Acquires a specific version of the YUNIQL CLI from the internet or the local cache and adds it to the PATH.",
+  "helpMarkDown": "Acquires a specific version of the YUNIQL CLI from the internet or the local cache and adds it to the PATH.",
   "author": "Rodel E. Dagumampan",
 
   "preview": true,
@@ -14,7 +14,7 @@
   "category": "Azure Pipelines",
   "version": {
     "Major": 0,
-    "Minor": 9,
+    "Minor": 14,
     "Patch": 0
   },
 
@@ -26,7 +26,7 @@
       "label": "Version",
       "defaultValue": "latest",
       "required": false,
-      "helpMarkDown": "The version of YUNIQL CLI. If omitted, the latest version of yuniql-cli is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
+      "helpMarkDown": "The version of YUNIQL CLI to use. If omitted, the latest version of YUNIQL CLI is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
     }
   ],
   "execution": {

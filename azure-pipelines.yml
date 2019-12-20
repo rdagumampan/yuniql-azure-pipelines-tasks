@@ -31,7 +31,7 @@ steps:
   inputs:
     script:
     workingDirectory: cd $(Build.SourcesDirectory)/src
-      call npm install
+      npm install
 
 - task: CmdLine@2
   inputs:

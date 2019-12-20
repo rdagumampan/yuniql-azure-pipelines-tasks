@@ -1,6 +1,6 @@
 # YUNIQL Azure Pipelines Tasks
 
-Run database migrations and schema versioning with YUNIQL. Supports SqlServer, PostgreSql, MySql and others. For developer guides and samples, visit ![](https://getyuniql.org) or [YUNIQL Project on GitHub](https://github.com/rdagumampan/yuniql/wiki).
+Run database migrations and schema versioning with YUNIQL. Supports SqlServer, PostgreSql, MySql and others. For developer guides and samples, visit [https://getyuniql.org](https://getyuniql.org) and [developer wiki](https://github.com/rdagumampan/yuniql/wiki).
 
 ### Azure DevOps YAML Pipelines
 

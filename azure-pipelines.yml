@@ -31,6 +31,7 @@ steps:
   inputs:
     script: |
       cd $(Build.SourcesDirectory)/src
+      npm install
       tsc
       cd $(Build.SourcesDirectory)
       tfx extension create --manifest-globs vss-extension.json

@@ -45,6 +45,12 @@ steps:
     script: |
       tfx extension create --manifest-globs vss-extension.json
 
+- task: CmdLine@2
+  inputs:
+    workingDirectory: $(Build.SourcesDirectory)
+    script: |
+      tfx extension create --manifest-globs vss-extension.json
+
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
@@ -54,3 +60,4 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
+

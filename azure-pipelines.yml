@@ -27,6 +27,14 @@ steps:
   inputs:
     arguments: 'tfx-cli@v0.7.6 --global'
 
+- task: Npm@1
+  displayName: Package
+  inputs:
+    workingDir: $(Build.SourcesDirectory)/src
+    command: custom
+    verbose: false
+    customCommand: 'run build'
+
 - task: CmdLine@2
   inputs:
     script: |
@@ -35,6 +43,7 @@ steps:
       tsc
       cd $(Build.SourcesDirectory)
       tfx extension create --manifest-globs vss-extension.json
+
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:

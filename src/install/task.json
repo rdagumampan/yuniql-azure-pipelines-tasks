@@ -1,9 +1,9 @@
 {
   "id": "52ecb5fe-bacc-4713-8c14-ea239b195aaa",
-  "name": "InstallYUNIQLCLI",
-  "friendlyName": "Install YUNIQL CLI",
+  "name": "UseYUNIQLCLI",
+  "friendlyName": "Use YUNIQL CLI",
   "description": "Acquires a specific version of the YUNIQL CLI from the internet or the local cache and adds it to the PATH.",
-  "helpMarkDown": "Acquires a specific version of the YUNIQL CLI from the internet or the local cache and adds it to the PATH.",
+  "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/How-to-run-migration-from-azure-devops",
   "author": "Rodel E. Dagumampan",
 
   "preview": true,
@@ -18,7 +18,7 @@
     "Patch": 0
   },
 
-  "instanceNameFormat": "Install YUNIQL CLI",
+  "instanceNameFormat": "Use YUNIQL CLI",
   "inputs": [
     {
       "type": "string",

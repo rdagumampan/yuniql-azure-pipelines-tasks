@@ -1,6 +1,6 @@
 # YUNIQL Azure Pipelines Tasks
 
-Run database migrations and schema versioning with YUNIQL. Supports SqlServer, PostgreSql, MySql and others. For developer guides and samples, visit [https://getyuniql.org](https://getyuniql.org) and [developer wiki](https://github.com/rdagumampan/yuniql/wiki).
+Run database migrations and schema versioning with YUNIQL. Supports SqlServer, PostgreSql, MySql and others. For developer guides and samples, visit [https://getyuniql.org](https://getyuniql.org) and [our developer wiki](https://github.com/rdagumampan/yuniql/wiki).
 
 ### Azure DevOps YAML Pipelines
 
@@ -12,7 +12,7 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: InstallYUNIQLCLI@0
+- task: UseYUNIQLCLI@0
   inputs:
     version: 'latest'
 
@@ -25,11 +25,11 @@ steps:
     additionalArguments: '--debug'
 ```
 
-### Install YUNIQL CLI Task
+### Use YUNIQL CLI Task
 
 ![](images/screenshot-01.png)
 
-This download and installs the yuniql-cli.
+This downloads and installs the yuniql-cli.
 * `version`: The version of Yuniql CLI. If omitted, the latest version of yuniql-cli is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version. 
 
 ### Run YUNIQL CLI Task

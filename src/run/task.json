@@ -3,7 +3,7 @@
   "name": "RunYUNIQLCLI",
   "friendlyName": "Run YUNIQL CLI",
   "description": "Runs database migrations with YUNIQL CLI using version acquired from Install YUNIQL task.",
-  "helpMarkDown": "Runs database migrations with YUNIQL CLI using version acquired from Install YUNIQL task.",
+  "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/How-to-run-migration-from-azure-devops",
   "author": "Rodel E. Dagumampan",
 
   "preview": true,

@@ -25,14 +25,14 @@ steps:
     additionalArguments: '--debug'
 ```
 
-### Use YUNIQL CLI Task
+### Use YUNIQL Task
 
 ![](images/screenshot-01.png)
 
 This downloads and installs the yuniql-cli.
 * `version`: The version of Yuniql CLI. If omitted, the latest version of yuniql-cli is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version. 
 
-### Run YUNIQL CLI Task
+### Run YUNIQL Task
 
 ![](images/screenshot-02.png)
 

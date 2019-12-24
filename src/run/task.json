@@ -1,8 +1,8 @@
 {
   "id": "e911672f-3d03-4a9d-a3b5-c5ecbadae905",
-  "name": "RunYUNIQLCLI",
-  "friendlyName": "Run YUNIQL",
-  "description": "Runs database migrations with YUNIQL CLI using version acquired from Install YUNIQL task.",
+  "name": "RunYuniqlCLI",
+  "friendlyName": "Run Yuniql",
+  "description": "Runs database migrations with Yuniql CLI using version acquired from Use Yuniql task.",
   "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/How-to-run-migration-from-azure-devops",
   "author": "Rodel E. Dagumampan",
 
@@ -20,7 +20,7 @@
     "Patch": 0
   },
 
-  "instanceNameFormat": "Run YUNIQL",
+  "instanceNameFormat": "Run Yuniql",
   "inputs": [
     {
       "type": "string",
@@ -28,7 +28,7 @@
       "label": "Version",
       "defaultValue": "latest",
       "required": true,
-      "helpMarkDown": "The version of YUNIQL CLI to use. If omitted, the latest version of YUNIQL CLI is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
+      "helpMarkDown": "The version of Yuniql CLI to use. If omitted, the latest version of Yuniql CLI is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
     },
     {
       "name": "connectionString",

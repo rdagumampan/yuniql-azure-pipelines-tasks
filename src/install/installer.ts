@@ -35,15 +35,16 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
                 version = "latest";
             }
 
-            //download
+            //download yuniql-cli-win-x64-latest.zip
             let dataFileName: string = '';
             switch (osPlat) {
-                case 'win32': dataFileName = 'yuniql-' + version + '-win-' + osArch + '.zip'; break;
-                //case 'linux': dataFileName = 'yuniql-' + version + '-linux-' + osArch + '.tar'; break;
+                case 'win32': dataFileName = 'yuniql-cli-win-' + osArch + '-' + version + '-full.zip'; break;
+                //case 'linux': dataFileName = 'yuniql-cli-linux-' + osArch + '-' + version + '.zip'; break;
                 default: throw new Error(`Unsupported Agent OS '${osPlat}'`);
             }
 
-            const downloadUrl = 'https://ci.appveyor.com/api/projects/rdagumampan/yuniql/artifacts/' + dataFileName;
+            const downloadBaseUrl = 'https://github.com/rdagumampan/yuniql/releases/download/latest/'
+            const downloadUrl = downloadBaseUrl + dataFileName;
             console.log('downloadUrl: ' + downloadUrl);
 
             const temp: string = await toolLib.downloadTool(downloadUrl);

@@ -22,8 +22,6 @@ async function run() {
         const tokenKeyValuePair = taskLib.getInput('tokenKeyValuePair', false);
         const additionalArguments = taskLib.getInput('additionalArguments', false);
 
-        console.log("Run is executed");
-
         //picksup the version downloaded from install task
         let version: string = '';
         console.log('versionSpec: ' + versionSpec);
@@ -34,20 +32,23 @@ async function run() {
             version = '0.0.0'
         }
 
-        //check the agent os, we use EXE in windows
-        //TODO: Support linux agents
-        let dataFileName: string = '';
-        switch (osPlat) {
-            case 'win32': dataFileName = 'yuniql.exe'; break;
-            default: throw new Error(`Unsupported Agent OS '${osPlat}'`);
-        }
-
         if (osPlat == 'win32') {
-            var yuniqlPath = path.join(toolLib.findLocalTool('yuniql', version), 'yuniql.exe');
+            var yuniqlBasePath = path.join(toolLib.findLocalTool('yuniql', version));
+            console.log('yuniqlBasePath: ' + yuniqlBasePath);
+
+            var yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');
+            console.log('yuniqlExecFilePath: ' + yuniqlExecFilePath);
+
+            //set the plugin path
+            var pluginPath = path.join(yuniqlBasePath, '.plugins');
+            console.log('pluginPath: ' + pluginPath);
 
             //builds up the arguments structure
-            let yuniql = new tr.ToolRunner(yuniqlPath);
+            let yuniql = new tr.ToolRunner(yuniqlExecFilePath);
             yuniql.arg('run');
+
+            yuniql.arg('--plugins-path');
+            yuniql.arg(pluginPath);
 
             yuniql.arg('-p');
             yuniql.arg(workspacePath);
@@ -87,8 +88,8 @@ async function run() {
             });
 
             //execute migrations with cli arguments
-            let execOptions = {} as tr.IExecOptions;
-            await yuniql.exec(execOptions);
+            let yuniqlExecOptions = {} as tr.IExecOptions;
+            await yuniql.exec(yuniqlExecOptions);
         } else {
             throw new Error(`Unsupported Agent OS '${osPlat}'`);
         }

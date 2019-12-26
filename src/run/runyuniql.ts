@@ -43,14 +43,14 @@ async function run() {
 
         if (osPlat == 'win32') {
             var yuniqlBasePath = path.join(toolLib.findLocalTool('yuniql', version));
-            console.log('yuniqlBasePath: ' + yuniqlBasePath);
+            console.log('var_yuniqlBasePath: ' + yuniqlBasePath);
 
             var yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');
-            console.log('yuniqlExecFilePath: ' + yuniqlExecFilePath);
+            console.log('var_yuniqlExecFilePath: ' + yuniqlExecFilePath);
 
             //set the plugin path
             var pluginsPath = path.join(yuniqlBasePath, '.plugins');
-            console.log('pluginsPath: ' + pluginsPath);
+            console.log('var_pluginsPath: ' + pluginsPath);
 
             //builds up the arguments structure
             let yuniql = new tr.ToolRunner(yuniqlExecFilePath);

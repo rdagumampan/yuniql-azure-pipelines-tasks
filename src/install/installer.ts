@@ -15,8 +15,8 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
         let version: string = '';
         if (toolLib.isExplicitVersion(versionSpec)) {
             checkLatest = false;
-            console.log('isExplicitVersion = true');
-            console.log('checkLatest = false');
+            console.log('var_isExplicitVersion: true');
+            console.log('var_checkLatest: false');
         }
 
         // when version is explicit, check the cache
@@ -31,9 +31,10 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
             if (toolLib.isExplicitVersion(versionSpec)) {
                 version = versionSpec;
             } else {
-                //query latest match
+                //TODO: query latest match
                 //TODO: Create release manifiest file
                 version = "latest";
+                console.log('var_version: version');
             }
 
             //download yuniql-cli-win-x64-latest.zip
@@ -46,14 +47,14 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
 
             const downloadBaseUrl = 'https://github.com/rdagumampan/yuniql/releases/download/latest/'
             const downloadUrl = downloadBaseUrl + dataFileName;
-            console.log('downloadUrl: ' + downloadUrl);
+            console.log('var_downloadUrl: ' + downloadUrl);
 
             const temp: string = await toolLib.downloadTool(downloadUrl);
-            console.log('temp: ' + temp);
+            console.log('var_temp: ' + temp);
 
             //extract assemblies
             const extractRoot: string = await toolLib.extractZip(temp);
-            console.log('extractRoot: ' + extractRoot);
+            console.log('var_extractRoot: ' + extractRoot);
 
             //cache assemblies
             if (version != 'latest') {

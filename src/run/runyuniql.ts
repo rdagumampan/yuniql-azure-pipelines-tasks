@@ -12,19 +12,28 @@ async function run() {
     tl.setResourcePath(path.join(__dirname, 'task.json'));
     try {
         const versionSpec = taskLib.getInput('version', false);
-
         const workspacePath = taskLib.getInput('workspacePath', true);
         const connectionString = taskLib.getInput('connectionString', true);
-
         const targetPlatform = taskLib.getInput('targetPlatform', false);
         const autoCreateDatabase = taskLib.getInput('autoCreateDatabase', false);
         const targetVersion = taskLib.getInput('targetVersion', false);
         const tokenKeyValuePair = taskLib.getInput('tokenKeyValuePair', false);
         const additionalArguments = taskLib.getInput('additionalArguments', false);
 
+        console.log('input_version: ' + versionSpec);
+        console.log('input_workspacePath: ' + workspacePath);
+        console.log('input_connectionString: ' + connectionString);
+        console.log('input_targetPlatform: ' + targetPlatform);
+        console.log('input_autoCreateDatabase: ' + autoCreateDatabase);
+        console.log('input_targetVersion: ' + targetVersion);
+        console.log('input_tokenKeyValuePair: ' + tokenKeyValuePair);
+        console.log('input_additionalArguments: ' + additionalArguments);
+
+        console.log('var_osPlat: ' + osPlat);
+        console.log('var_osArch: ' + osArch);
+
         //picksup the version downloaded from install task
         let version: string = '';
-        console.log('versionSpec: ' + versionSpec);
         if (toolLib.isExplicitVersion(versionSpec)) {
             version = versionSpec;
         } else {
@@ -40,15 +49,15 @@ async function run() {
             console.log('yuniqlExecFilePath: ' + yuniqlExecFilePath);
 
             //set the plugin path
-            var pluginPath = path.join(yuniqlBasePath, '.plugins');
-            console.log('pluginPath: ' + pluginPath);
+            var pluginsPath = path.join(yuniqlBasePath, '.plugins');
+            console.log('pluginsPath: ' + pluginsPath);
 
             //builds up the arguments structure
             let yuniql = new tr.ToolRunner(yuniqlExecFilePath);
             yuniql.arg('run');
 
             yuniql.arg('--plugins-path');
-            yuniql.arg(pluginPath);
+            yuniql.arg(pluginsPath);
 
             yuniql.arg('-p');
             yuniql.arg(workspacePath);
@@ -56,7 +65,7 @@ async function run() {
             yuniql.arg('-c');
             yuniql.arg(connectionString);
 
-            if (targetPlatform && targetPlatform.toUpperCase() != 'SQLSERVER') {
+            if (targetPlatform && targetPlatform.toLowerCase() != 'sqlserver') {
                 yuniql.arg('--platform');
                 yuniql.arg(targetPlatform);
             }
@@ -66,7 +75,7 @@ async function run() {
                 yuniql.arg(autoCreateDatabase);
             }
 
-            if (targetVersion && targetVersion.toUpperCase() != 'LATEST') {
+            if (targetVersion && targetVersion.toLowerCase() != 'latest') {
                 yuniql.arg('-t');
                 yuniql.arg(targetVersion);
             }
@@ -79,13 +88,6 @@ async function run() {
             if (additionalArguments) {
                 yuniql.arg(additionalArguments);
             }
-
-            yuniql.on('stdout', (buffer: Buffer) => {
-                process.stdout.write(buffer);
-            });
-            yuniql.on('stderr', (buffer: Buffer) => {
-                process.stderr.write(buffer);
-            });
 
             //execute migrations with cli arguments
             let yuniqlExecOptions = {} as tr.IExecOptions;

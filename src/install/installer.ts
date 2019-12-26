@@ -8,10 +8,11 @@ const osArch: string = (os.arch() === 'ia32') ? 'x86' : os.arch();
 
 export async function getYuniql(versionSpec: string, checkLatest: boolean) {
     try {
-        let version: string = '';
-        console.log('versionSpec: ' + versionSpec);
+        console.log('var_osPlat: ' + osPlat);
+        console.log('var_osArch: ' + osArch);
 
         // when version is explicit, we dont check the latest
+        let version: string = '';
         if (toolLib.isExplicitVersion(versionSpec)) {
             checkLatest = false;
             console.log('isExplicitVersion = true');
@@ -50,11 +51,11 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
             const temp: string = await toolLib.downloadTool(downloadUrl);
             console.log('temp: ' + temp);
 
-            //extract
+            //extract assemblies
             const extractRoot: string = await toolLib.extractZip(temp);
             console.log('extractRoot: ' + extractRoot);
 
-            //cache
+            //cache assemblies
             if (version != 'latest') {
                 toolLib.cacheDir(extractRoot, "yuniql", version);
             } else {
@@ -65,7 +66,6 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
 
             //append PATH
             toolLib.prependPath(extractRoot);
-            console.log(extractRoot);
         }
     }
     catch (err) {

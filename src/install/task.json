@@ -3,7 +3,7 @@
   "name": "UseYuniqlCLI",
   "friendlyName": "Use Yuniql",
   "description": "Acquires a specific version of the Yuniql CLI from the internet or the local cache and adds it to the PATH.",
-  "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/How-to-run-migration-from-azure-devops",
+  "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/how-to-run-migration-from-azure-devops",
   "author": "Rodel E. Dagumampan",
 
   "preview": true,

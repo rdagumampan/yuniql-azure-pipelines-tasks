@@ -3,7 +3,7 @@
   "name": "RunYuniqlCLI",
   "friendlyName": "Run Yuniql",
   "description": "Runs database migrations with Yuniql CLI using version acquired from Use Yuniql task.",
-  "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/How-to-run-migration-from-azure-devops",
+  "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/how-to-run-migration-from-azure-devops",
   "author": "Rodel E. Dagumampan",
 
   "preview": true,
@@ -54,8 +54,6 @@
       "defaultValue": "SqlServer",
       "options": {
         "sqlserver": "SqlServer"
-        //"postgresql": "PostgreSql",
-        //"mysql": "MySql"
       },
       "helpMarkDown": "The target database platform. Default is SqlServer."
     },

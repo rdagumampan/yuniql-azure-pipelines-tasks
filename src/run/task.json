@@ -82,6 +82,14 @@
       "helpMarkDown": "Token key/value pairs for token replacement."
     },
     {
+      "name": "delimiter",
+      "label": "Bulk import file (CSV) delimiter",
+      "type": "string",
+      "defaultValue": ",",
+      "required": false,
+      "helpMarkDown": "Bulk import file delimiter character"
+    },
+    {
       "name": "additionalArguments",
       "label": "Arguments",
       "type": "string",

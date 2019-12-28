@@ -18,6 +18,7 @@ async function run() {
         const autoCreateDatabase = taskLib.getInput('autoCreateDatabase', false);
         const targetVersion = taskLib.getInput('targetVersion', false);
         const tokenKeyValuePair = taskLib.getInput('tokenKeyValuePair', false);
+        const delimiter = taskLib.getInput('delimiter', false);
         const additionalArguments = taskLib.getInput('additionalArguments', false);
 
         console.log('input_version: ' + versionSpec);
@@ -27,6 +28,7 @@ async function run() {
         console.log('input_autoCreateDatabase: ' + autoCreateDatabase);
         console.log('input_targetVersion: ' + targetVersion);
         console.log('input_tokenKeyValuePair: ' + tokenKeyValuePair);
+        console.log('input_delimiter: ' + delimiter);
         console.log('input_additionalArguments: ' + additionalArguments);
 
         console.log('var_osPlat: ' + osPlat);
@@ -83,6 +85,11 @@ async function run() {
             if (tokenKeyValuePair) {
                 yuniql.arg('-k');
                 yuniql.arg(tokenKeyValuePair);
+            }
+
+            if (delimiter) {
+                yuniql.arg('--delimiter');
+                yuniql.arg(delimiter);
             }
 
             if (additionalArguments) {

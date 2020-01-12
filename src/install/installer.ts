@@ -34,19 +34,19 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
                 //TODO: query latest match
                 //TODO: Create release manifiest file
                 version = "latest";
-                console.log('var_version: version');
+                console.log('var_version: ' + version);
             }
 
             //download yuniql-cli-win-x64-latest.zip
-            let dataFileName: string = '';
+            let packageFileName: string = '';
             switch (osPlat) {
-                case 'win32': dataFileName = 'yuniql-cli-win-' + osArch + '-' + version + '-full.zip'; break;
+                case 'win32': packageFileName = 'yuniql-cli-win-' + osArch + '-' + version + '-full.zip'; break;
                 //case 'linux': dataFileName = 'yuniql-cli-linux-' + osArch + '-' + version + '.zip'; break;
                 default: throw new Error(`Unsupported Agent OS '${osPlat}'`);
             }
 
-            const downloadBaseUrl = 'https://github.com/rdagumampan/yuniql/releases/download/latest/'
-            const downloadUrl = downloadBaseUrl + dataFileName;
+            const downloadBaseUrl = 'https://github.com/rdagumampan/yuniql/releases/download'
+            const downloadUrl = downloadBaseUrl + '/' + version + '/' + packageFileName;
             console.log('var_downloadUrl: ' + downloadUrl);
 
             const temp: string = await toolLib.downloadTool(downloadUrl);
@@ -61,8 +61,9 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
                 toolLib.cacheDir(extractRoot, "yuniql", version);
             } else {
                 //use v0.0.0 as placeholder for latest version
-                toolLib.cleanVersion('0.0.0');
-                toolLib.cacheDir(extractRoot, "yuniql", '0.0.0');
+                //TODO: always replace the current cached version for now
+                toolLib.cleanVersion('v0.0.0');
+                toolLib.cacheDir(extractRoot, "yuniql", 'v0.0.0');
             }
 
             //append PATH

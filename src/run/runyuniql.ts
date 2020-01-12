@@ -35,16 +35,16 @@ async function run() {
         console.log('var_osArch: ' + osArch);
 
         //picksup the version downloaded from install task
-        let version: string = '';
+        let versionLocation: string = '';
         if (toolLib.isExplicitVersion(versionSpec)) {
-            version = versionSpec;
+            versionLocation = versionSpec;
         } else {
             //use v0.0.0 as placeholder for latest version
-            version = '0.0.0'
+            versionLocation = 'v0.0.0'
         }
 
         if (osPlat == 'win32') {
-            var yuniqlBasePath = path.join(toolLib.findLocalTool('yuniql', version));
+            var yuniqlBasePath = path.join(toolLib.findLocalTool('yuniql', versionLocation));
             console.log('var_yuniqlBasePath: ' + yuniqlBasePath);
 
             var yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');

@@ -25,7 +25,7 @@
       "name": "version",
       "label": "Version",
       "defaultValue": "latest",
-      "required": false,
+      "required": true,
       "helpMarkDown": "The version of Yuniql CLI to use. If omitted, the latest version of Yuniql CLI is installed. Visit the [releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version."
     }
   ],

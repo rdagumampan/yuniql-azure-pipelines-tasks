@@ -72,7 +72,7 @@ async function run() {
                 yuniql.arg(targetPlatform);
             }
 
-            if (autoCreateDatabase) {
+            if (autoCreateDatabase == "true") {
                 yuniql.arg('-a');
                 yuniql.arg(autoCreateDatabase);
             }

@@ -43,10 +43,10 @@ This runs database migration with yuniql-cli.
 * `Database connection string`: The connection string to your target database server.
 * `Target workspace directory`: The location of your version directories to run.
 * `Target platform`: The target database platform. Default is SqlServer.
-* `Aut-create target database`: When true, creates and configure the database in the target server for yuniql migrations.
+* `Auto-create target database`: When true, creates and configure the database in the target server for yuniql migrations.
 * `Target version`: The maximum target database schema version to run to.
 * `Token key/value pairs`: Token key/value pairs for token replacement.
-* `Additional arguments`: Additional CLI arguments
+* `Additional arguments`: Additional CLI arguments such as `--debug` to enable trace message.
 
 ### License
 Copyright (C) 2019 Rodel E. Dagumampan

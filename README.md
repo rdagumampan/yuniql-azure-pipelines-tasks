@@ -2,7 +2,7 @@
 
 Run database migrations and schema versioning with Yuniql. Supports SqlServer, PostgreSql, MySql and others. For samples and developer guide, visit [https://yuniql.io](https://yuniql.io) and walk through our [developer wiki](https://github.com/rdagumampan/yuniql/wiki).
 
-**NOTE: This is a PREVIEW RELEASE. Please star or watch the project in GitHub for release updates. See https://github.com/rdagumampan/yuniql**
+**NOTE: This is a PREVIEW RELEASE. Stay tuned for latest features and releases, star or watch project yuniql on Github. See  https://github.com/rdagumampan/yuniql**
 
 ### Azure DevOps YAML Pipelines
 

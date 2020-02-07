@@ -1,8 +1,14 @@
 # Yuniql Azure Pipelines Tasks
 
-Run database migrations and schema versioning with Yuniql. Supports SqlServer, PostgreSql, MySql and others. For samples and developer guide, visit [https://yuniql.io](https://yuniql.io) and walk through our [developer wiki](https://github.com/rdagumampan/yuniql/wiki).
+Run database migrations and schema versioning with Yuniql. Supports SqlServer, PostgreSql, MySql and others. For samples and developer guide, walk through our [wiki documentation](https://github.com/rdagumampan/yuniql/wiki) and bookmark [https://yuniql.io](https://yuniql.io).
 
 **NOTE: This is a PREVIEW RELEASE. Stay tuned for latest features and releases, star or watch project yuniql on Github. See  https://github.com/rdagumampan/yuniql**
+
+### Pre-requisites
+* Works only with Windows-based agents for now
+* The pipeline tasks requires a yuniql compliant directory structure. To create this structure you may [install yuniql-cli](https://github.com/rdagumampan/yuniql/wiki/Install-yuniql), commit to a git repository and use the repository as input artifact in the pipelines. You may also copy our [existing samples](https://github.com/rdagumampan/yuniql/tree/master/samples) for your target database platform and commit to your own repo.
+
+  ![](images/screenshot-03.png)
 
 ### Azure DevOps YAML Pipelines
 
@@ -22,10 +28,21 @@ steps:
   inputs:
     version: 'latest'
     connectionString: 'Server=tcp:<AZ-SQLSERVER>,1433;Initial Catalog=<AZ-SQLDB>;User ID=<USERID>;Password=<PASSWORD>;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-    workspacePath: '$(Build.SourcesDirectory)\sqlserver-samples\visitph-db'
+    workspacePath: '$(Build.SourcesDirectory)\samples\basic-sqlserver-sample'
     targetPlatform: 'SqlServer'
     additionalArguments: '--debug'
 ```
+
+This runs database migration with yuniql-cli.
+* `version`: The version of Yuniql CLI. If omitted, the latest version of yuniql-cli is installed. [Visit releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version. 
+* `connectionString`: The connection string to your target database server.
+* `workspacePath`: The location of your version directories to run.
+* `targetPlatform`: The target database platform. Default is SqlServer.
+* `autoCreateDatabase`: When true, creates and configure the database in the target server for yuniql migrations.
+* `targetVersion`: The maximum target database schema version to run to.
+* `tokenKeyValuePair`: Token key/value pairs for token replacement.
+* `delimiter`: The delimeter to use other than default comma when parsing CSV file.
+* `additionalArguments`: Additional CLI arguments such as `--debug` to enable trace message.
 
 ### Use Yuniql Task
 
@@ -37,16 +54,6 @@ This downloads and installs the yuniql-cli.
 ### Run Yuniql Task
 
 ![](images/screenshot-02.png)
-
-This runs database migration with yuniql-cli.
-* `Version`: The version of Yuniql CLI. If omitted, the latest version of yuniql-cli is installed. [Visit releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version. 
-* `Database connection string`: The connection string to your target database server.
-* `Target workspace directory`: The location of your version directories to run.
-* `Target platform`: The target database platform. Default is SqlServer.
-* `Auto-create target database`: When true, creates and configure the database in the target server for yuniql migrations.
-* `Target version`: The maximum target database schema version to run to.
-* `Token key/value pairs`: Token key/value pairs for token replacement.
-* `Additional arguments`: Additional CLI arguments such as `--debug` to enable trace message.
 
 ### License
 Copyright (C) 2019 Rodel E. Dagumampan

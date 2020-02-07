@@ -6,9 +6,9 @@ Run database migrations and schema versioning with Yuniql. Supports SqlServer, P
 
 ### Pre-requisites
 * Works only with Windows-based agents for now
-* The pipeline tasks requires a yuniql compliant directory structure. To create this structure you may [install yuniql-cli](https://github.com/rdagumampan/yuniql/wiki/Install-yuniql), commit to a git repository and use the repository as input artifact in the pipelines. You may also copy our [existing samples](https://github.com/rdagumampan/yuniql/tree/master/samples) for your target database platform and commit to your own repo.
+* Requires a yuniql compliant directory structure. To create this structure you may [install yuniql-cli](https://github.com/rdagumampan/yuniql/wiki/Install-yuniql), issue `yuniql init`, commit to a git repository and use the repository as input artifact in the pipelines. You may also copy our [existing samples](https://github.com/rdagumampan/yuniql/tree/master/samples) for your target database platform and commit to your own repo.
 
-  ![](images/screenshot-03.png)
+  ![](images/yuniql-init.png)
 
 ### Azure DevOps YAML Pipelines
 
@@ -44,16 +44,27 @@ This runs database migration with yuniql-cli.
 * `delimiter`: The delimeter to use other than default comma when parsing CSV file.
 * `additionalArguments`: Additional CLI arguments such as `--debug` to enable trace message.
 
-### Use Yuniql Task
+### Use YUNIQL CLI Task
+Downloads `Yuniql CLI` and make the CLI available for later tasks.
 
-![](images/screenshot-01.png)
+  ![](images/yuniql-install.png)
 
-This downloads and installs the yuniql-cli.
-* `Version`: The version of Yuniql CLI. If omitted, the latest version of yuniql-cli is installed. [Visit releases](https://github.com/rdagumampan/yuniql/releases) to get an appropriate version. 
+### Run YUNIQL CLI Task
+Runs the database migration based of defined execution parameters.
 
-### Run Yuniql Task
+  ![](images/yuniql-run.png)
 
-![](images/screenshot-02.png)
+## Verify YUNIQL CLI Task
+Runs an uncommitted migration run. This performs a dry-run migration before making committed changes to target database.
+
+  ![](images/yuniql-verify.png)
+
+## Erase YUNIQL CLI Task
+Erases the target database objects (tables, procedures, functions, and others) using user defined clean-up scripts placed in `_erase` directory. Yuniql doesn't have automated erasure so user have to defined the scope of erasure. 
+
+>WARNING: This is helpful in Dev and Test. Be very careful and remove this task when cloning pipelines for Production!
+
+  ![](images/yuniql-erase.png)
 
 ### License
 Copyright (C) 2019 Rodel E. Dagumampan

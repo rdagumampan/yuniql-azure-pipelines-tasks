@@ -50,6 +50,14 @@
       "packagePath": "run"
     },
     {
+      "path": "src/verify",
+      "packagePath": "verify"
+    },
+    {
+      "path": "src/erase",
+      "packagePath": "erase"
+    },
+    {
       "path": "src/node_modules",
       "packagePath": "install/node_modules"
     },
@@ -95,6 +103,26 @@
       ],
       "properties": {
         "name": "run"
+      }
+    },
+    {
+      "id": "verify-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "verify"
+      }
+    },
+    {
+      "id": "erase-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "erase"
       }
     }
   ]

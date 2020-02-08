@@ -64,6 +64,14 @@
     {
       "path": "src/node_modules",
       "packagePath": "run/node_modules"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "verify/node_modules"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "erase/node_modules"
     }
   ],
   "links": {

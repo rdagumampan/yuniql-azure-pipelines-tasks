@@ -5,7 +5,7 @@ Run database migrations and schema versioning with Yuniql. Supports SqlServer, P
 **NOTE: This is a PREVIEW RELEASE. Stay tuned for latest features and releases, star or watch project yuniql on Github. See  https://github.com/rdagumampan/yuniql**
 
 ### Pre-requisites
-* Works only with Windows-based agents for now
+* Requires windows-based agents. Linux agents compatible tasks underway. 
 * Requires a yuniql compliant directory structure. To create this structure you may [install yuniql-cli](https://github.com/rdagumampan/yuniql/wiki/Install-yuniql), issue `yuniql init`, commit to a git repository and use the repository as input artifact in the pipelines. You may also copy our [existing samples](https://github.com/rdagumampan/yuniql/tree/master/samples) for your target database platform and commit to your own repo.
 
   ![](images/yuniql-init.png)

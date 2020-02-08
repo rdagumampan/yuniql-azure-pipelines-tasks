@@ -55,10 +55,10 @@ Runs the database migration based of defined execution parameters.
   ![](images/yuniql-run.png)
 
 ## Verify YUNIQL CLI Task
-Runs an uncommitted migration run. This performs a dry-run migration before making committed changes to target database.
+Runs an uncommitted migration run. This performs a dry-run migration to verify if all works good should the versions be decided to be applied. Requires at least one successful run was made in the target database.
 
 ## Erase YUNIQL CLI Task
-Erases the target database objects (tables, procedures, functions, and others) using user defined clean-up scripts placed in `_erase` directory. Yuniql doesn't have automated erasure so user have to defined the scope of erasure. 
+Erases the target database objects (tables, procedures, functions, and others) using user defined clean-up scripts placed in `_erase` directory. Yuniql doesn't have automated erasure so user have to prepare the scope of erasure. 
 
 >WARNING: This is helpful in Dev and Test. Be very careful and remove this task when cloning pipelines for Production!
 

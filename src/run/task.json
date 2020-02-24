@@ -1,7 +1,7 @@
 {
   "id": "e911672f-3d03-4a9d-a3b5-c5ecbadae905",
   "name": "RunYuniqlCLI",
-  "friendlyName": "Run Yuniql",
+  "friendlyName": "Run yuniql",
   "description": "Runs database migrations with Yuniql CLI using version acquired from Use Yuniql task.",
   "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/how-to-run-migration-from-azure-devops",
   "author": "Rodel E. Dagumampan",

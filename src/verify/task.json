@@ -1,7 +1,7 @@
 {
   "id": "195fe2bf-078f-4417-927d-df7d0648d2cf",
   "name": "VerifyYuniqlCLI",
-  "friendlyName": "Verify Yuniql",
+  "friendlyName": "Verify yuniql",
   "description": "Runs an uncommitted database migrations with Yuniql CLI using version acquired from Use Yuniql task.",
   "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/how-to-run-migration-from-azure-devops",
   "author": "Rodel E. Dagumampan",

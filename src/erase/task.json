@@ -3,7 +3,7 @@
   "name": "EraseYuniqlCLI",
   "friendlyName": "Erase yuniql",
   "description": "Erase database objects with Yuniql CLI using version acquired from Use Yuniql task.",
-  "helpMarkDown": "https://github.com/rdagumampan/yuniql/wiki/how-to-run-migration-from-azure-devops",
+  "helpMarkDown": "https://yuniql.io/docs/migrate-via-azure-devops-pipelines/",
   "author": "Rodel E. Dagumampan",
 
   "preview": true,

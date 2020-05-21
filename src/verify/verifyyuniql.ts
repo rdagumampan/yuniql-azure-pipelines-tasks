@@ -4,7 +4,6 @@ import * as taskLib from 'azure-pipelines-task-lib/task';
 import * as toolLib from 'azure-pipelines-tool-lib/tool';
 import * as tr from 'azure-pipelines-task-lib/toolrunner';
 import * as os from 'os';
-import { Utility } from '../utils/Utility';
 
 const osPlat: string = os.platform();
 const osArch: string = (os.arch() === 'ia32') ? 'x86' : os.arch();
@@ -87,7 +86,7 @@ async function run() {
             }
 
             if (additionalArguments) {
-                var additionalArgumentsArray = Utility.argStringToArray(additionalArguments);
+                var additionalArgumentsArray = argStringToArray(additionalArguments);
                 yuniql.arg(additionalArgumentsArray);
 
                 console.log("yuniql/additionalArguments array is");
@@ -107,6 +106,55 @@ async function run() {
         console.log('yuniql/error: ' + error.message);
         tl.setResult(tl.TaskResult.Failed, error.message);
     }
+}
+
+function argStringToArray(argString): string[] {
+    var args = [];
+    var inQuotes = false;
+    var escaped = false;
+    var arg = '';
+    var append = function (c) {
+        // we only escape double quotes.
+        if (escaped && c !== '"') {
+            arg += '\\';
+        }
+        arg += c;
+        escaped = false;
+    };
+    for (var i = 0; i < argString.length; i++) {
+        var c = argString.charAt(i);
+        if (c === '"') {
+            if (!escaped) {
+                inQuotes = !inQuotes;
+            }
+            else {
+                append(c);
+            }
+            continue;
+        }
+        if (c === "\\" && inQuotes) {
+            if(escaped) {
+                append(c);
+            }
+            else {
+                escaped = true;
+            }
+
+            continue;
+        }
+        if (c === ' ' && !inQuotes) {
+            if (arg.length > 0) {
+                args.push(arg);
+                arg = '';
+            }
+            continue;
+        }
+        append(c);
+    }
+    if (arg.length > 0) {
+        args.push(arg.trim());
+    }
+    return args;
 }
 
 run();

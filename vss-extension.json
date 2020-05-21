@@ -42,6 +42,10 @@
       "addressable": true
     },
     {
+      "path": "src/utils",
+      "packagePath": "utils"
+    },
+    {
       "path": "src/install",
       "packagePath": "install"
     },

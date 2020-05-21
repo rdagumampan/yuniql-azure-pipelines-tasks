@@ -4,6 +4,7 @@ import * as taskLib from 'azure-pipelines-task-lib/task';
 import * as toolLib from 'azure-pipelines-tool-lib/tool';
 import * as tr from 'azure-pipelines-task-lib/toolrunner';
 import * as os from 'os';
+import { Utility } from '../utils/Utility';
 
 const osPlat: string = os.platform();
 const osArch: string = (os.arch() === 'ia32') ? 'x86' : os.arch();
@@ -50,16 +51,9 @@ async function run() {
             var yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');
             console.log('yuniql/var_yuniqlExecFilePath: ' + yuniqlExecFilePath);
 
-            //set the plugin path
-            // var pluginsPath = path.join(yuniqlBasePath, '.plugins');
-            // console.log('var_pluginsPath: ' + pluginsPath);
-
             //builds up the arguments structure
             let yuniql = new tr.ToolRunner(yuniqlExecFilePath);
             yuniql.arg('verify');
-
-            // yuniql.arg('--plugins-path');
-            // yuniql.arg(pluginsPath);
 
             yuniql.arg('-p');
             yuniql.arg(workspacePath);
@@ -93,7 +87,13 @@ async function run() {
             }
 
             if (additionalArguments) {
-                yuniql.arg(additionalArguments);
+                var additionalArgumentsArray = Utility.argStringToArray(additionalArguments);
+                yuniql.arg(additionalArgumentsArray);
+
+                console.log("yuniql/additionalArguments array is");
+                for(var i = 0 ; i < additionalArgumentsArray.length ; i++ ) {
+                    console.log("arg#" + i + ": " + additionalArgumentsArray[i]);
+                }
             }
 
             //execute migrations with cli arguments

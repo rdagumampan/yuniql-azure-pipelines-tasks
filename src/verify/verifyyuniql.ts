@@ -81,7 +81,7 @@ async function run() {
             }
 
             if (delimiter) {
-                yuniql.arg('--delimiter');
+                yuniql.arg('--bulk-separator');
                 yuniql.arg(delimiter);
             }
 

@@ -72,7 +72,13 @@ async function run() {
             }
 
             if (additionalArguments) {
-                yuniql.arg(additionalArguments);
+                var additionalArgumentsArray = argStringToArray(additionalArguments);
+                yuniql.arg(additionalArgumentsArray);
+
+                console.log("yuniql/additionalArguments array is");
+                for(var i = 0 ; i < additionalArgumentsArray.length ; i++ ) {
+                    console.log("arg#" + i + ": " + additionalArgumentsArray[i]);
+                }
             }
 
             //execute migrations with cli arguments
@@ -86,6 +92,55 @@ async function run() {
         console.log('yuniql/error: ' + error.message);
         tl.setResult(tl.TaskResult.Failed, error.message);
     }
+}
+
+function argStringToArray(argString): string[] {
+    var args = [];
+    var inQuotes = false;
+    var escaped = false;
+    var arg = '';
+    var append = function (c) {
+        // we only escape double quotes.
+        if (escaped && c !== '"') {
+            arg += '\\';
+        }
+        arg += c;
+        escaped = false;
+    };
+    for (var i = 0; i < argString.length; i++) {
+        var c = argString.charAt(i);
+        if (c === '"') {
+            if (!escaped) {
+                inQuotes = !inQuotes;
+            }
+            else {
+                append(c);
+            }
+            continue;
+        }
+        if (c === "\\" && inQuotes) {
+            if(escaped) {
+                append(c);
+            }
+            else {
+                escaped = true;
+            }
+
+            continue;
+        }
+        if (c === ' ' && !inQuotes) {
+            if (arg.length > 0) {
+                args.push(arg);
+                arg = '';
+            }
+            continue;
+        }
+        append(c);
+    }
+    if (arg.length > 0) {
+        args.push(arg.trim());
+    }
+    return args;
 }
 
 run();

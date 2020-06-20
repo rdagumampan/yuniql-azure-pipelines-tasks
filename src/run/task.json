@@ -55,7 +55,8 @@
       "options": {
         "sqlserver": "SqlServer",
         "postgresql": "PostgreSql",
-        "mysql": "MySql"
+        "mysql": "MySql",
+        "mariadb": "MariaDB"
       },
       "helpMarkDown": "The target database platform. Default is SqlServer."
     },

@@ -37,56 +37,52 @@ async function run() {
             versionLocation = 'v0.0.0'
         }
 
+        var yuniqlBasePath = path.join(toolLib.findLocalTool('yuniql', versionLocation));
+        console.log('yuniql/var_yuniqlBasePath: ' + yuniqlBasePath);
+
+        //use exe file when in windows, else use linux native file
+        let yuniqlExecFilePath: string = '';
         if (osPlat == 'win32') {
-            var yuniqlBasePath = path.join(toolLib.findLocalTool('yuniql', versionLocation));
-            console.log('yuniql/var_yuniqlBasePath: ' + yuniqlBasePath);
-
-            var yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');
+            yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');
             console.log('yuniql/var_yuniqlExecFilePath: ' + yuniqlExecFilePath);
-
-            //set the plugin path
-            // var pluginsPath = path.join(yuniqlBasePath, '.plugins');
-            // console.log('var_pluginsPath: ' + pluginsPath);
-
-            //builds up the arguments structure
-            let yuniql = new tr.ToolRunner(yuniqlExecFilePath);
-            yuniql.arg('erase');
-
-            // yuniql.arg('--plugins-path');
-            // yuniql.arg(pluginsPath);
-
-            yuniql.arg('-p');
-            yuniql.arg(workspacePath);
-
-            yuniql.arg('-c');
-            yuniql.arg(connectionString);
-
-            if (targetPlatform && targetPlatform.toLowerCase() != 'sqlserver') {
-                yuniql.arg('--platform');
-                yuniql.arg(targetPlatform);
-            }
-
-            if (tokenKeyValuePair) {
-                yuniql.arg('-k');
-                yuniql.arg(tokenKeyValuePair);
-            }
-
-            if (additionalArguments) {
-                var additionalArgumentsArray = argStringToArray(additionalArguments);
-                yuniql.arg(additionalArgumentsArray);
-
-                console.log("yuniql/additionalArguments array is");
-                for(var i = 0 ; i < additionalArgumentsArray.length ; i++ ) {
-                    console.log("arg#" + i + ": " + additionalArgumentsArray[i]);
-                }
-            }
-
-            //execute migrations with cli arguments
-            let yuniqlExecOptions = {} as tr.IExecOptions;
-            await yuniql.exec(yuniqlExecOptions);
         } else {
-            throw new Error(`Unsupported Agent OS '${osPlat}'`);
+            yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql');
+            console.log('yuniql/var_yuniqlExecFilePath: ' + yuniqlExecFilePath);
         }
+
+        //builds up the arguments structure
+        let yuniql = new tr.ToolRunner(yuniqlExecFilePath);
+        yuniql.arg('erase');
+
+        yuniql.arg('-p');
+        yuniql.arg(workspacePath);
+
+        yuniql.arg('-c');
+        yuniql.arg(connectionString);
+
+        if (targetPlatform && targetPlatform.toLowerCase() != 'sqlserver') {
+            yuniql.arg('--platform');
+            yuniql.arg(targetPlatform);
+        }
+
+        if (tokenKeyValuePair) {
+            yuniql.arg('-k');
+            yuniql.arg(tokenKeyValuePair);
+        }
+
+        if (additionalArguments) {
+          var additionalArgumentsArray = argStringToArray(additionalArguments);
+          yuniql.arg(additionalArgumentsArray);
+
+          console.log("yuniql/additionalArguments array is");
+          for(var i = 0 ; i < additionalArgumentsArray.length ; i++ ) {
+              console.log("arg#" + i + ": " + additionalArgumentsArray[i]);
+          }
+        }
+
+      //execute migrations with cli arguments
+        let yuniqlExecOptions = {} as tr.IExecOptions;
+        await yuniql.exec(yuniqlExecOptions);
     }
     catch (error) {
         console.log('yuniql/error: ' + error.message);

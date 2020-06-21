@@ -45,9 +45,16 @@ async function run() {
 
         var yuniqlBasePath = path.join(toolLib.findLocalTool('yuniql', versionLocation));
         console.log('yuniql/var_yuniqlBasePath: ' + yuniqlBasePath);
-
-        var yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');
-        console.log('yuniql/var_yuniqlExecFilePath: ' + yuniqlExecFilePath);
+        
+        //use exe file when in windows, else use linux native file
+        let yuniqlExecFilePath: string = '';
+        if (osPlat == 'win32') {
+            yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql.exe');
+            console.log('yuniql/var_yuniqlExecFilePath: ' + yuniqlExecFilePath);
+        } else {
+            yuniqlExecFilePath = path.join(yuniqlBasePath, 'yuniql');
+            console.log('yuniql/var_yuniqlExecFilePath: ' + yuniqlExecFilePath);
+        }
 
         //builds up the arguments structure
         let yuniql = new tr.ToolRunner(yuniqlExecFilePath);
@@ -97,11 +104,6 @@ async function run() {
         //execute migrations with cli arguments
         let yuniqlExecOptions = {} as tr.IExecOptions;
         await yuniql.exec(yuniqlExecOptions);
-
-        // if (osPlat == 'win32') {
-        // } else {
-        //     throw new Error(`Unsupported Agent OS '${osPlat}'`);
-        // }
     }
     catch (error) {
         console.log('yuniql/error: ' + error.message);

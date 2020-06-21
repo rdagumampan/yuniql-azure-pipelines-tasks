@@ -338,3 +338,11 @@ ASALocalRun/
 *.taskkey
 *.vsix
 *.zip
+
+# Local ignored files
+src/erase/eraseyuniql.js.map
+src/install/installer.js.map
+src/install/proxyutil.js.map
+src/install/useyuniql.js.map
+src/run/runyuniql.js.map
+src/verify/verifyyuniql.js.map

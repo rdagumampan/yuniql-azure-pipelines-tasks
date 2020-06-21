@@ -43,7 +43,7 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
             let packageFileName: string = '';
             switch (osPlat) {
                 case 'win32': packageFileName = 'yuniql-cli-win-' + osArch + '-' + version + '.zip'; break;
-                //case 'linux': dataFileName = 'yuniql-cli-linux-' + osArch + '-' + version + '.tar'; break;
+                case 'linux': packageFileName = 'yuniql-cli-linux-' + osArch + '-' + version + '.tar'; break;
                 default: throw new Error(`Unsupported Agent OS '${osPlat}'`);
             }
 
@@ -55,8 +55,14 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
             console.log('yuniql/var_temp: ' + temp);
 
             //extract assemblies
-            const extractRoot: string = await toolLib.extractZip(temp);
-            console.log('yuniql/var_extractRoot: ' + extractRoot);
+            let extractRoot: string = '';
+            if (osPlat == 'win32') {
+                extractRoot = await toolLib.extractZip(temp);
+                console.log('yuniql/var_extractRoot: ' + extractRoot);
+            } else{
+                extractRoot = await toolLib.extractTar(temp);
+                console.log('yuniql/var_extractRoot: ' + extractRoot);
+            }
 
             //cache assemblies
             if (version != 'latest') {
@@ -66,6 +72,13 @@ export async function getYuniql(versionSpec: string, checkLatest: boolean) {
                 //TODO: always replace the current cached version for now
                 toolLib.cleanVersion('v0.0.0');
                 toolLib.cacheDir(extractRoot, "yuniql", 'v0.0.0');
+            }
+
+            // a tool installer initimately knows details about the layout of that tool
+            // for example, node binary is in the bin folder after the extract on Mac/Linux.
+            // layouts could change by version, by platform etc... but that's the tool installers job
+            if (osPlat != 'win32') {
+                extractRoot = path.join(extractRoot, 'bin');
             }
 
             //append PATH

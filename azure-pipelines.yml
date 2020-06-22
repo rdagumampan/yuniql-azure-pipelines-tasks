@@ -40,17 +40,20 @@ stages:
             npm install
 
       - task: CmdLine@2
+        displayName: 'tsc'
         inputs:
           workingDirectory: $(Build.SourcesDirectory)/src
           script: |
             tsc
 
       - task: CmdLine@2
+        displayName: 'tfx create vsix public'
         inputs:
           workingDirectory: $(Build.SourcesDirectory)
           script: |
             tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public
       - task: CmdLine@2
+        displayName: 'tfx create vsix private'
         inputs:
           workingDirectory: $(Build.SourcesDirectory)
           script: |
@@ -83,24 +86,18 @@ stages:
             # - task: NodeTool@0
             #   displayName: 'Use Node 6.x'
 
-            - task: CmdLine@2
+            - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
+              displayName: 'Publish Extension'
               inputs:
-                workingDirectory: $(Build.SourcesDirectory)
-                script: |
-                  cd $(Build.ArtifactStagingDirectory)
-                  dir
-
-            # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
-            #   displayName: 'Publish Extension'
-            #   inputs:
-            #     connectedServiceName: 'az-marketplace'
-            #     fileType: vsix
-            #     vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
-            #     extensionVersion: '0.$(Release.ReleaseId).0'
-            #     extensionVisibility: private
-            #     extensionPricing: free
-            #     bypassLocalValidation: true
-            #     noWaitValidation: true
+                connectedServiceName: 'az-marketplace'
+                fileType: vsix
+                vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
+                extensionVersion: '0.$(Release.ReleaseId).0'
+                extensionTag: '-dev'
+                extensionVisibility: private
+                extensionPricing: free
+                bypassLocalValidation: true
+                noWaitValidation: true
 
 - stage: publishPublic
   dependsOn: publishPrivate

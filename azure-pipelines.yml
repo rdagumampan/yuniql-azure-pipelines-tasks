@@ -78,7 +78,7 @@ stages:
         runOnce:
           deploy:
             steps:
-            - checkout: self
+            - task: DownloadPipelineArtifact@2
             - task: NodeTool@0
               displayName: 'Use Node 6.x'
 

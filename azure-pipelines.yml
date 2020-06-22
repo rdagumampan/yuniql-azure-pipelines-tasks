@@ -45,13 +45,6 @@ stages:
           workingDirectory: $(Build.SourcesDirectory)/src
           script: |
             tsc
-
-      - task: CmdLine@2
-        displayName: 'tfx create vsix public'
-        inputs:
-          workingDirectory: $(Build.SourcesDirectory)
-          script: |
-            tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public
       - task: CmdLine@2
         displayName: 'tfx create vsix private'
         inputs:
@@ -59,6 +52,13 @@ stages:
           script: |
             tfx extension create --publisher rdagumampandev --manifest-globs vss-extension.json --output-path vsix-private
     
+      # - task: CmdLine@2
+      #   displayName: 'tfx create vsix public'
+      #   inputs:
+      #     workingDirectory: $(Build.SourcesDirectory)
+      #     script: |
+      #       tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public
+
       - task: CopyFiles@2
         displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
         inputs:

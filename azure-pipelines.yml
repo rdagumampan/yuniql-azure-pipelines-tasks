@@ -14,7 +14,7 @@ pool:
 stages:
 
 - stage: build
-  displayName: Build vsix
+  displayName: Build vsix packages
   jobs:
     - job: build
       steps:
@@ -49,14 +49,9 @@ stages:
         inputs:
           workingDirectory: $(Build.SourcesDirectory)
           script: |
-            tfx extension create --manifest-globs vss-extension.json
-
-      - task: CmdLine@2
-        inputs:
-          workingDirectory: $(Build.SourcesDirectory)
-          script: |
-            tfx extension create --manifest-globs vss-extension.json
-
+            tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public
+            tfx extension create --publisher rdagumampandev --manifest-globs vss-extension.json --output-path vsix-private
+    
       - task: CopyFiles@2
         displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
         inputs:
@@ -68,36 +63,45 @@ stages:
         displayName: 'Publish Artifact: drop'
 
 - stage: publishPrivate
-  displayName: Publish to private
+  displayName: Publish to private marketplace
   dependsOn: build
   jobs:
     - deployment: private
+
       environment: az-marketplace-private
 
       strategy:
         runOnce:
           deploy:
             steps:
-            - task: NodeTool@0
-              displayName: 'Use Node 6.x'
+            # - task: NodeTool@0
+            #   displayName: 'Use Node 6.x'
 
-            - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
-              displayName: 'Publish Extension'
+            - task: CmdLine@2
               inputs:
-                connectedServiceName: 'az-marketplace'
-                fileType: vsix
-                vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
-                extensionVersion: '0.$(Release.ReleaseId).0'
-                extensionVisibility: private
-                extensionPricing: free
-                bypassLocalValidation: true
-                noWaitValidation: true
+                workingDirectory: $(Build.SourcesDirectory)
+                script: |
+                  cd $(Build.ArtifactStagingDirectory)
+                  dir
+
+            # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
+            #   displayName: 'Publish Extension'
+            #   inputs:
+            #     connectedServiceName: 'az-marketplace'
+            #     fileType: vsix
+            #     vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
+            #     extensionVersion: '0.$(Release.ReleaseId).0'
+            #     extensionVisibility: private
+            #     extensionPricing: free
+            #     bypassLocalValidation: true
+            #     noWaitValidation: true
 
 - stage: publishPublic
   dependsOn: publishPrivate
-  displayName: Publish to public
+  displayName: Publish to public marketplace
   jobs:
     - deployment: private
+
       environment: az-marketplace-public
 
       strategy:

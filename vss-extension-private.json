@@ -1,0 +1,141 @@
+{
+  "manifestVersion": 1,
+  "id": "yuniql-azdevops-extensions",
+  "version": "0.14.0",
+  "name": "Yuniql",
+  "publisher": "rdagumampandev",
+  "description": "Run database migrations and schema versioning with Yuniql. Supports SqlServer, PostgreSql, MySql and others. For samples and developer guides, visit https://yuniql.io.",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "yuniql",
+    "database-migration",
+    "database-version-control",
+    "database-management",
+    "sql",
+    "sqlserver",
+    "mysql",
+    "postgresql",
+    "devops"
+  ],
+  "galleryFlags": [
+    "Free",
+    "Private"
+  ],
+  "icons": {
+    "default": "icon.png"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "files": [
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+      "path": "src/utils",
+      "packagePath": "utils"
+    },
+    {
+      "path": "src/install",
+      "packagePath": "install"
+    },
+    {
+      "path": "src/run",
+      "packagePath": "run"
+    },
+    {
+      "path": "src/verify",
+      "packagePath": "verify"
+    },
+    {
+      "path": "src/erase",
+      "packagePath": "erase"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "install/node_modules"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "run/node_modules"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "verify/node_modules"
+    },
+    {
+      "path": "src/node_modules",
+      "packagePath": "erase/node_modules"
+    }
+  ],
+  "links": {
+    "overview": {
+      "uri": "https://yuniql.io"
+    },
+    "license": {
+      "uri": "https://github.com/rdagumampan/yuniql/blob/master/LICENSE.md"
+    },
+    "repository": {
+      "uri": "https://github.com/rdagumampan/yuniql"
+    },
+    "issues": {
+      "uri": "https://github.com/rdagumampan/yuniql/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/rdagumampan/yuniql"
+  },
+  "contributions": [
+    {
+      "id": "install-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "install"
+      }
+    },
+    {
+      "id": "run-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "run"
+      }
+    },
+    {
+      "id": "verify-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "verify"
+      }
+    },
+    {
+      "id": "erase-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "erase"
+      }
+    }
+  ]
+}

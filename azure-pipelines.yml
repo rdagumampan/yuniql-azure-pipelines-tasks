@@ -67,7 +67,7 @@ stages:
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
       - publish: '$(Build.ArtifactStagingDirectory)'
-        artifact: package
+        artifact: vsix-package
 
 
 - stage: publishPrivate
@@ -87,7 +87,7 @@ stages:
               inputs:
                 script: |
                   echo $(System.ArtifactsDirectory)
-                  cd $(System.ArtifactsDirectory)
+                  cd $(System.ArtifactsDirectory)/vsix-package
                   dir
 
             # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
@@ -95,7 +95,7 @@ stages:
             #   inputs:
             #     connectedServiceName: 'az-marketplace'
             #     fileType: vsix
-            #     vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
+            #     vsixFile: '$(Build.ArtifactsDirectory)/vsix-package/*.vsix'
             #     extensionVersion: '0.$(Release.ReleaseId).0'
             #     extensionTag: '-dev'
             #     extensionVisibility: private

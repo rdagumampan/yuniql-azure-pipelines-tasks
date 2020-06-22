@@ -11,53 +11,99 @@ pr:
 pool:
   vmImage: 'windows-2019'
 
-steps:
-- task: Npm@1
-  displayName: 'npm install'
-  inputs:
-    verbose: false
+stages:
 
-- task: Npm@0
-  displayName: 'install typescript'
-  inputs:
-    arguments: 'typescript@2.8.1 --global-style'
+- stage: build
+  displayName: Build vsix
+  jobs:
+    - job: build
+      steps:
+      - task: Npm@1
+        displayName: 'npm install'
+        inputs:
+          verbose: false
 
-- task: Npm@0
-  displayName: 'install tfx-cli command'
-  inputs:
-    arguments: 'tfx-cli@v0.7.6 --global'
+      - task: Npm@0
+        displayName: 'install typescript'
+        inputs:
+          arguments: 'typescript@2.8.1 --global-style'
 
-- task: CmdLine@2
-  inputs:
-    workingDirectory: $(Build.SourcesDirectory)/src
-    script: |
-      npm install
+      - task: Npm@0
+        displayName: 'install tfx-cli command'
+        inputs:
+          arguments: 'tfx-cli@v0.7.6 --global'
 
-- task: CmdLine@2
-  inputs:
-    workingDirectory: $(Build.SourcesDirectory)/src
-    script: |
-      tsc
+      - task: CmdLine@2
+        inputs:
+          workingDirectory: $(Build.SourcesDirectory)/src
+          script: |
+            npm install
 
-- task: CmdLine@2
-  inputs:
-    workingDirectory: $(Build.SourcesDirectory)
-    script: |
-      tfx extension create --manifest-globs vss-extension.json
+      - task: CmdLine@2
+        inputs:
+          workingDirectory: $(Build.SourcesDirectory)/src
+          script: |
+            tsc
 
-- task: CmdLine@2
-  inputs:
-    workingDirectory: $(Build.SourcesDirectory)
-    script: |
-      tfx extension create --manifest-globs vss-extension.json
+      - task: CmdLine@2
+        inputs:
+          workingDirectory: $(Build.SourcesDirectory)
+          script: |
+            tfx extension create --manifest-globs vss-extension.json
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '**/*.vsix'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      - task: CmdLine@2
+        inputs:
+          workingDirectory: $(Build.SourcesDirectory)
+          script: |
+            tfx extension create --manifest-globs vss-extension.json
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+        inputs:
+          SourceFolder: '$(Build.SourcesDirectory)'
+          Contents: '**/*.vsix'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact: drop'
+
+- stage: publishPrivate
+  displayName: Publish to private
+  dependsOn: build
+  jobs:
+    - deployment: private
+      environment: az-marketplace-private
+
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - checkout: self
+            - task: NodeTool@0
+              displayName: 'Use Node 6.x'
+
+            - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
+              displayName: 'Publish Extension'
+              inputs:
+                connectedServiceName: 'az-marketplace'
+                fileType: vsix
+                vsixFile: '$(System.DefaultWorkingDirectory)/_rdagumampan.yuniql-azure-pipelines-tasks/drop/*.vsix'
+                extensionVersion: '0.$(Release.ReleaseId).0'
+                extensionVisibility: private
+                extensionPricing: free
+                bypassLocalValidation: true
+                noWaitValidation: true
+
+- stage: publishPublic
+  dependsOn: publishPrivate
+  displayName: Publish to public
+  jobs:
+    - deployment: private
+      environment: az-marketplace-public
+
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - checkout: self
 

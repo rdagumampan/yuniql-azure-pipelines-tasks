@@ -85,20 +85,20 @@ stages:
               displayName: 'dir'
               inputs:
                 script: |
-                  echo $(System.DefaultWorkingDirectory)
+                  echo $(System.ArtifactsDirectory)
 
-            - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
-              displayName: 'Publish Extension'
-              inputs:
-                connectedServiceName: 'az-marketplace'
-                fileType: vsix
-                vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
-                extensionVersion: '0.$(Release.ReleaseId).0'
-                extensionTag: '-dev'
-                extensionVisibility: private
-                extensionPricing: free
-                bypassLocalValidation: true
-                noWaitValidation: true
+            # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
+            #   displayName: 'Publish Extension'
+            #   inputs:
+            #     connectedServiceName: 'az-marketplace'
+            #     fileType: vsix
+            #     vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
+            #     extensionVersion: '0.$(Release.ReleaseId).0'
+            #     extensionTag: '-dev'
+            #     extensionVisibility: private
+            #     extensionPricing: free
+            #     bypassLocalValidation: true
+            #     noWaitValidation: true
 
 - stage: publishPublic
   dependsOn: publishPrivate

@@ -80,12 +80,7 @@ stages:
       strategy:
         runOnce:
           deploy:
-            steps:
-            - checkout: self
-
-            # - task: NodeTool@0
-            #   displayName: 'Use Node 6.x'
-
+            steps:            
             - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
               displayName: 'Publish Extension'
               inputs:

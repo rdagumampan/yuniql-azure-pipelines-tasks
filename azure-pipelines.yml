@@ -66,8 +66,9 @@ stages:
           Contents: '**/*.vsix'
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact: drop'
+      - publish: '$(Build.ArtifactStagingDirectory)'
+        artifact: package
+
 
 - stage: publishPrivate
   displayName: Publish to private marketplace

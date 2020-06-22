@@ -49,7 +49,10 @@ stages:
         inputs:
           workingDirectory: $(Build.SourcesDirectory)
           script: |
+            echo "tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public"
             tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public
+
+            echo "tfx extension create --publisher rdagumampandev --manifest-globs vss-extension.json --output-path vsix-private"
             tfx extension create --publisher rdagumampandev --manifest-globs vss-extension.json --output-path vsix-private
     
       - task: CopyFiles@2
@@ -74,6 +77,8 @@ stages:
         runOnce:
           deploy:
             steps:
+            - checkout: self
+
             # - task: NodeTool@0
             #   displayName: 'Use Node 6.x'
 

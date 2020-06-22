@@ -86,6 +86,8 @@ stages:
               inputs:
                 script: |
                   echo $(System.ArtifactsDirectory)
+                  cd $(System.ArtifactsDirectory)
+                  dir
 
             # - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
             #   displayName: 'Publish Extension'

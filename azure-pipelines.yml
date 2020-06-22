@@ -78,7 +78,6 @@ stages:
         runOnce:
           deploy:
             steps:
-            - task: DownloadPipelineArtifact@2
             - task: NodeTool@0
               displayName: 'Use Node 6.x'
 
@@ -87,7 +86,7 @@ stages:
               inputs:
                 connectedServiceName: 'az-marketplace'
                 fileType: vsix
-                vsixFile: '$(System.DefaultWorkingDirectory)/_rdagumampan.yuniql-azure-pipelines-tasks/drop/*.vsix'
+                vsixFile: '$(Build.ArtifactStagingDirectory)/drop/*.vsix'
                 extensionVersion: '0.$(Release.ReleaseId).0'
                 extensionVisibility: private
                 extensionPricing: free

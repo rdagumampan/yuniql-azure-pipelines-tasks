@@ -81,6 +81,12 @@ stages:
         runOnce:
           deploy:
             steps:            
+            - task: CmdLine@2
+              displayName: 'dir'
+              inputs:
+                script: |
+                  echo $(System.DefaultWorkingDirectory)
+
             - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
               displayName: 'Publish Extension'
               inputs:

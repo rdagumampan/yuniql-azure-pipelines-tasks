@@ -50,14 +50,14 @@ stages:
         inputs:
           workingDirectory: $(Build.SourcesDirectory)
           script: |
-            tfx extension create --publisher rdagumampandev --manifest-globs vss-extension.json --output-path vsix-private
+            tfx extension create --manifest-globs vss-extension.json --output-path vsix-private
     
-      # - task: CmdLine@2
-      #   displayName: 'tfx create vsix public'
-      #   inputs:
-      #     workingDirectory: $(Build.SourcesDirectory)
-      #     script: |
-      #       tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public
+      - task: CmdLine@2
+        displayName: 'tfx create vsix public'
+        inputs:
+          workingDirectory: $(Build.SourcesDirectory)
+          script: |
+            tfx extension create --manifest-globs vss-extension.json --output-path vsix-public
 
       - task: CopyFiles@2
         displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
@@ -95,8 +95,8 @@ stages:
               inputs:
                 connectedServiceName: 'az-marketplace'
                 fileType: vsix
-                vsixFile: '$(Pipeline.Workspace)/vsix-package/*.vsix'
-                extensionVersion: '0.$(Release.ReleaseId).0'
+                vsixFile: '$(Pipeline.Workspace)/vsix-package/vsix-private/*.vsix'
+                extensionVersion: '0.186.$(Release.ReleaseId)'
                 extensionTag: '-dev'
                 extensionVisibility: private
                 extensionPricing: free

@@ -49,10 +49,11 @@ stages:
         inputs:
           workingDirectory: $(Build.SourcesDirectory)
           script: |
-            echo "tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public"
             tfx extension create --publisher rdagumampan --manifest-globs vss-extension.json --output-path vsix-public
-
-            echo "tfx extension create --publisher rdagumampandev --manifest-globs vss-extension.json --output-path vsix-private"
+      - task: CmdLine@2
+        inputs:
+          workingDirectory: $(Build.SourcesDirectory)
+          script: |
             tfx extension create --publisher rdagumampandev --manifest-globs vss-extension.json --output-path vsix-private
     
       - task: CopyFiles@2

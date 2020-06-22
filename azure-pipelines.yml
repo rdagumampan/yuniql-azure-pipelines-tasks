@@ -86,8 +86,8 @@ stages:
               displayName: 'dir'
               inputs:
                 script: |
-                  echo $(System.ArtifactsDirectory)
-                  cd $(System.ArtifactsDirectory)
+                  echo $(Pipeline.Workspace)
+                  cd  $(Pipeline.Workspace)
                   dir
                   
             - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
@@ -95,7 +95,7 @@ stages:
               inputs:
                 connectedServiceName: 'az-marketplace'
                 fileType: vsix
-                vsixFile: '$(Build.ArtifactsDirectory)/vsix-package/*.vsix'
+                vsixFile: '$(Pipeline.Workspace)/vsix-package/*.vsix'
                 extensionVersion: '0.$(Release.ReleaseId).0'
                 extensionTag: '-dev'
                 extensionVisibility: private

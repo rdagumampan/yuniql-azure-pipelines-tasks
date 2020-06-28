@@ -9,7 +9,9 @@ pr:
 - master
 
 variables: 
-  MyRunNumber: '1.186.0'
+  MajorVersion: 1  
+  MinorVersion: $[counter(variables['MajorVersion'], 186)]  
+  VsixPackageVersion: '$(MajorVersion).$(MinorVersion).0'
 
 pool:
   vmImage: 'windows-2019'
@@ -102,7 +104,7 @@ stages:
                 connectedServiceName: 'az-marketplace'
                 fileType: vsix
                 vsixFile: '$(Pipeline.Workspace)/vsix-package/vsix-private/*.vsix'
-                extensionVersion: '$(MyRunNumber)'
+                extensionVersion: '$(VsixPackageVersion)'
                 extensionTag: '-dev'
                 extensionVisibility: private
                 extensionPricing: free
@@ -138,7 +140,7 @@ stages:
                 connectedServiceName: 'az-marketplace'
                 fileType: vsix
                 vsixFile: '$(Pipeline.Workspace)/vsix-package/vsix-public/*.vsix'
-                extensionVersion: '$(MyRunNumber)'
+                extensionVersion: '$(VsixPackageVersion)'
                 extensionVisibility: public
                 extensionPricing: free
                 bypassLocalValidation: true

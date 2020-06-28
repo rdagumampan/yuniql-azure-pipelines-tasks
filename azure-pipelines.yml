@@ -9,7 +9,7 @@ pr:
 - master
 
 variables: 
-  MyRunNumber: '1.186.$(Build.BuildNumber)'
+  MyRunNumber: '1.186.0'
 
 pool:
   vmImage: 'windows-2019'
@@ -113,13 +113,33 @@ stages:
   dependsOn: publishPrivate
   displayName: Publish to public marketplace
   jobs:
-    - deployment: private
+    - deployment: public
 
       environment: az-marketplace-public
 
       strategy:
         runOnce:
           deploy:
-            steps:
-            - checkout: self
+            steps:            
+            - task: CmdLine@2
+              displayName: 'dir'
+              inputs:
+                script: |
+                  echo $(Pipeline.Workspace)
+                  cd  $(Pipeline.Workspace)/vsix-package/vsix-public
+                  dir
+                  
+            - task: NodeTool@0
+              displayName: 'Use Node 6.x'
 
+            - task: ms-devlabs.vsts-developer-tools-build-tasks.publish-extension-build-task.PublishAzureDevOpsExtension@2
+              displayName: 'Publish Extension'
+              inputs:
+                connectedServiceName: 'az-marketplace'
+                fileType: vsix
+                vsixFile: '$(Pipeline.Workspace)/vsix-package/vsix-public/*.vsix'
+                extensionVersion: '$(MyRunNumber)'
+                extensionVisibility: public
+                extensionPricing: free
+                bypassLocalValidation: true
+                noWaitValidation: true

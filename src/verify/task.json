@@ -6,7 +6,7 @@
   "helpMarkDown": "https://yuniql.io/docs/migrate-via-azure-devops-pipelines/",
   "author": "Rodel E. Dagumampan",
 
-  "preview": true,
+  "preview": false,
   "showEnvironmentVariables": false,
   "runsOn": [
     "Agent",

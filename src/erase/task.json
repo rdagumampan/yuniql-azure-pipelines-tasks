@@ -56,7 +56,10 @@
         "sqlserver": "SqlServer",
         "postgresql": "PostgreSql",
         "mysql": "MySql",
-        "mariadb": "MariaDB"
+        "mariadb": "MariaDb",
+        "snowflake":"Snowflake",
+        "redshift":"Redshift",
+        "synapse":"Synapse"
       },
       "helpMarkDown": "The target database platform. Default is SqlServer."
     },

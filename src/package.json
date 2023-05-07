@@ -20,7 +20,7 @@
     "@types/node": "^10.12.24",
     "@types/q": "^1.5.1",
     "azure-pipelines-task-lib": "3.0.0-preview",
-    "azure-pipelines-tool-lib": "^0.12.0",
-    "typed-rest-client": "^1.1.2"
+    "azure-pipelines-tool-lib": "^2.0.4",
+    "typed-rest-client": "^1.8.9"
   }
 }
